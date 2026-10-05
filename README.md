@@ -2,7 +2,7 @@
 
 > Playwright + TypeScript E2E test suite for [saucedemo.com](https://www.saucedemo.com) — a demo e-commerce application used to practice and showcase test automation.
 
-[![Playwright Tests](https://github.com/<your-username>/playwright-demo-shop/actions/workflows/playwright.yml/badge.svg)](https://github.com/<your-username>/playwright-demo-shop/actions)
+[![Playwright Tests](https://github.com/vorpaster/playwright-demo-shop/actions/workflows/playwright.yml/badge.svg)](https://github.com/vorpaster/playwright-demo-shop/actions)
 
 ---
 
@@ -12,19 +12,19 @@
 
 | Suite | File | Scenarios |
 |---|---|---|
-| 🔐 Authentication | `tests/login.spec.ts` | Valid login, invalid credentials, locked-out user |
-| 🛒 Shopping Cart | `tests/cart.spec.ts` | Add item, add multiple items, remove item |
-| ✅ Checkout | `tests/checkout.spec.ts` | Full checkout flow, order summary data integrity |
+Authentication | `tests/login.spec.ts` | Valid login, invalid credentials, locked-out user |
+Shopping Cart | `tests/cart.spec.ts` | Add item, add multiple items, remove item |
+Checkout | `tests/checkout.spec.ts` | Full checkout flow, order summary data integrity |
 
 **Total: 8 test scenarios**
 
 ---
 
-## Design pattern — Page Object Model (POM)
+## Design model — Page Object Model (POM)
 
-All locators and page interactions are encapsulated in the `pages/` folder. Tests never reference raw CSS selectors directly — they call readable methods like `loginPage.login(...)` or `cartPage.expectItemInCart(...)`.
+All locators and page interactions are collected in the `pages/` folder. Tests never reference raw CSS selectors directly — they call readable methods like `loginPage.login(...)` or `cartPage.expectItemInCart(...)`.
 
-**Why POM?** If a selector changes in the app, you fix it in one place — not across every test file.
+**Why POM?** If a selector changes in the app, you fix it in one place, helps to avoid test ID changes and pointers/locators in the code.
 
 ```
 playwright-demo-shop/
@@ -71,9 +71,9 @@ Copy the example file and fill in your values:
 cp .env.example .env
 ```
 
-> ⚠️ **Never commit `.env` to git.** It is listed in `.gitignore`. Use `.env.example` as the template.
+> **Never commit `.env` to git.** It is listed in `.gitignore`. Use `.env.example` as the template.
 
-For SauceDemo the credentials are publicly documented, but the `.env` pattern is shown here as best practice for projects with real secrets.
+For the Swag Labs demo shop the credentials are publicly documented, but the `.env` pattern is shown here as best practice for projects with real secrets.
 
 ---
 
