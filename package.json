@@ -1,0 +1,16 @@
+{
+  "name": "saucedemo-playwright-tests",
+  "version": "1.0.0",
+  "description": "Playwright E2E test suite for SauceDemo — Redmenta Senior QA Manager assignment",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:ui": "npx playwright test --ui",
+    "test:report": "npx playwright show-report",
+    "lint": "npx tsc --noEmit"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.0",
+    "typescript": "^5.0.0"
+  }
+}
