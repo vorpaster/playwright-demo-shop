@@ -57,7 +57,7 @@ playwright-demo-shop/
 ### Install
 
 ```bash
-git clone https://github.com/<your-username>/playwright-demo-shop.git
+git clone https://github.com/vorpaster/playwright-demo-shop.git
 cd playwright-demo-shop
 npm install
 npx playwright install chromium
