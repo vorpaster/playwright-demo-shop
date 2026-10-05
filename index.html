@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SauceDemo — Help Center</title>
+<style>
+  :root {
+    --red: #E8342A;
+    --red-light: #FFF0EF;
+    --red-mid: #FDDBD9;
+    --dark: #1C1C1C;
+    --mid: #4A4A4A;
+    --muted: #767676;
+    --border: #E8E4E0;
+    --bg: #FAFAF9;
+    --white: #FFFFFF;
+    --success: #1A7F4B;
+    --success-bg: #EDFAF3;
+    --warn-bg: #FFF8ED;
+    --warn: #9A5F00;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--dark);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .logo-mark {
+    width: 32px;
+    height: 32px;
+    background: var(--red);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: -0.5px;
+  }
+
+  .logo-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  .logo-sub {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .hero-eyebrow {
+    display: inline-block;
+    background: var(--red-light);
+    color: var(--red);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    letter-spacing: 0.03em;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 480px;
+    margin: 0 auto 2rem;
+  }
+
+  /* ── QUICK NAV ── */
+  .quick-nav {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .quick-nav a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    color: var(--mid);
+    text-decoration: none;
+    transition: border-color .15s, color .15s;
+  }
+
+  .quick-nav a:hover {
+    border-color: var(--red);
+    color: var(--red);
+  }
+
+  .quick-nav a svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  /* ── CREDENTIALS CALLOUT ── */
+  .credentials {
+    background: var(--red-light);
+    border: 1px solid var(--red-mid);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .credentials-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--red);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .cred-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  @media (max-width: 500px) {
+    .cred-grid { grid-template-columns: 1fr; }
+  }
+
+  .cred-item {
+    background: white;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .cred-label {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .cred-value {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 13px;
+    color: var(--dark);
+    font-weight: 500;
+  }
+
+  .cred-note {
+    font-size: 12px;
+    color: var(--muted);
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    margin-bottom: 3rem;
+    scroll-margin-top: 80px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--red-light);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--red);
+  }
+
+  .section-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .section h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  /* ── STEPS ── */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .step {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--dark);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .step-body {
+    flex: 1;
+  }
+
+  .step-body strong {
+    font-size: 14px;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .step-body p {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.5;
+  }
+
+  .step-body code {
+    background: var(--border);
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-family: 'SF Mono', monospace;
+    font-size: 12px;
+    color: var(--dark);
+  }
+
+  /* ── NOTICE BOXES ── */
+  .notice {
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 13px;
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  .notice.tip {
+    background: var(--success-bg);
+    color: var(--success);
+    border-left: 3px solid var(--success);
+  }
+
+  .notice.warn {
+    background: var(--warn-bg);
+    color: var(--warn);
+    border-left: 3px solid #F5A623;
+  }
+
+  /* ── FAQ ── */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  details {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  details + details {
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    margin-top: -1px;
+  }
+
+  details:first-child {
+    border-radius: 8px 8px 0 0;
+  }
+
+  details[open] {
+    border-color: var(--red);
+  }
+
+  summary {
+    padding: 14px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    user-select: none;
+  }
+
+  summary::-webkit-details-marker { display: none; }
+
+  summary::after {
+    content: '+';
+    font-size: 18px;
+    color: var(--muted);
+    line-height: 1;
+    flex-shrink: 0;
+    margin-left: 12px;
+    transition: transform .2s;
+  }
+
+  details[open] summary::after {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    padding: 0 16px 14px;
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.6;
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+  }
+
+  .faq-answer code {
+    background: var(--border);
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-family: 'SF Mono', monospace;
+    font-size: 12px;
+    color: var(--dark);
+  }
+
+  .user-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 10px;
+  }
+
+  .user-table th {
+    text-align: left;
+    padding: 8px 10px;
+    background: var(--bg);
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .user-table td {
+    padding: 10px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  .user-table tr:last-child td { border-bottom: none; }
+
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+
+  .badge.green { background: var(--success-bg); color: var(--success); }
+  .badge.red { background: var(--red-light); color: var(--red); }
+  .badge.grey { background: var(--border); color: var(--muted); }
+
+  /* ── AI METHODOLOGY ── */
+  .methodology {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .methodology-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  .method-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+  }
+
+  .method-item {
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+
+  .method-item strong {
+    font-size: 13px;
+    display: block;
+    margin-bottom: 4px;
+    color: var(--dark);
+  }
+
+  .method-item p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="#" class="logo">
+    <div class="logo-mark">SD</div>
+    <div>
+      <div class="logo-text">SauceDemo</div>
+    </div>
+  </a>
+  <span class="logo-sub">Help Center</span>
+</header>
+
+<div class="hero">
+  <span class="hero-eyebrow">User Guide</span>
+  <h1>How to use SauceDemo</h1>
+  <p>A demo e-commerce site for practice and testing. Here's everything you need to log in, browse, and complete a purchase.</p>
+  <nav class="quick-nav" aria-label="Page sections">
+    <a href="#login">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+      Logging in
+    </a>
+    <a href="#shopping">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+      Shopping
+    </a>
+    <a href="#checkout">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+      Checkout
+    </a>
+    <a href="#faq">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+      FAQ
+    </a>
+  </nav>
+</div>
+
+<div class="container">
+
+  <!-- CREDENTIALS -->
+  <div class="credentials">
+    <div class="credentials-title">Test credentials</div>
+    <div class="cred-grid">
+      <div class="cred-item">
+        <span class="cred-label">Username</span>
+        <span class="cred-value">standard_user</span>
+        <span class="cred-note">Standard shopping access</span>
+      </div>
+      <div class="cred-item">
+        <span class="cred-label">Password</span>
+        <span class="cred-value">secret_sauce</span>
+        <span class="cred-note">Same for all accounts</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: LOGIN -->
+  <section class="section" id="login">
+    <div class="section-header">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+      </div>
+      <h2>Logging in</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Go to the site</strong>
+          <p>Open <code>saucedemo.com</code> in your browser. You'll land directly on the login page.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Enter your username</strong>
+          <p>Type <code>standard_user</code> in the Username field.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Enter your password</strong>
+          <p>Type <code>secret_sauce</code> in the Password field.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Click Login</strong>
+          <p>You'll be taken to the product listing page. If you see a red error message, check that there are no typos in your credentials.</p>
+        </div>
+      </div>
+    </div>
+    <div class="notice tip">You'll stay logged in for the duration of your browser session. Closing the tab or clicking the burger menu → Reset App State will log you out.</div>
+  </section>
+
+  <!-- SECTION 2: SHOPPING -->
+  <section class="section" id="shopping">
+    <div class="section-header">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+      </div>
+      <h2>Browsing and adding to cart</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Browse the products</strong>
+          <p>After logging in you'll see 6 products. Use the sort dropdown (top right) to order them by name or price.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Add an item to your cart</strong>
+          <p>Click the <code>Add to cart</code> button below any product. The cart icon in the top right will show a red number — that's your item count.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>View or remove items</strong>
+          <p>Click the cart icon to see everything you've added. To remove an item, click the <code>Remove</code> button next to it.</p>
+        </div>
+      </div>
+    </div>
+    <div class="notice tip">Clicking a product name or image opens its detail page. You can add it to the cart from there too.</div>
+  </section>
+
+  <!-- SECTION 3: CHECKOUT -->
+  <section class="section" id="checkout">
+    <div class="section-header">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+      </div>
+      <h2>Checking out</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Open your cart</strong>
+          <p>Click the cart icon in the top right. Review your items, then click <code>Checkout</code>.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Fill in your details</strong>
+          <p>Enter a first name, last name, and postal code. You can use any values — this is a demo site, no real data is required.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Review your order</strong>
+          <p>Check the order summary — you'll see each item, the item total, tax, and the final total. Click <code>Finish</code> when ready.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Order confirmed</strong>
+          <p>You'll see a confirmation page with "Thank you for your order!" Your cart is now empty and you can start again.</p>
+        </div>
+      </div>
+    </div>
+    <div class="notice warn">No real payment is processed. SauceDemo is a test environment — entering real card details is unnecessary and not recommended.</div>
+  </section>
+
+  <!-- SECTION 4: FAQ -->
+  <section class="section" id="faq">
+    <div class="section-header">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+      </div>
+      <h2>Common questions</h2>
+    </div>
+
+    <div class="faq-list">
+
+      <details>
+        <summary>Are there other usernames I can use?</summary>
+        <div class="faq-answer">
+          Yes. SauceDemo provides several test accounts, each with different behaviour:
+          <table class="user-table" style="margin-top:10px">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>What it does</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>standard_user</code></td>
+                <td><span class="badge green">Normal</span> Full access, everything works</td>
+              </tr>
+              <tr>
+                <td><code>locked_out_user</code></td>
+                <td><span class="badge red">Blocked</span> Cannot log in — shows an error</td>
+              </tr>
+              <tr>
+                <td><code>problem_user</code></td>
+                <td><span class="badge red">Buggy</span> Images are broken, some buttons misbehave</td>
+              </tr>
+              <tr>
+                <td><code>performance_glitch_user</code></td>
+                <td><span class="badge grey">Slow</span> Login and page loads are deliberately delayed</td>
+              </tr>
+              <tr>
+                <td><code>error_user</code></td>
+                <td><span class="badge red">Errors</span> Some actions trigger error messages</td>
+              </tr>
+              <tr>
+                <td><code>visual_user</code></td>
+                <td><span class="badge grey">Visual bugs</span> Layout issues on certain pages</td>
+              </tr>
+            </tbody>
+          </table>
+          All accounts use the same password: <code>secret_sauce</code>
+        </div>
+      </details>
+
+      <details>
+        <summary>I typed the right password but it still says "Username and password do not match"</summary>
+        <div class="faq-answer">
+          Double-check for extra spaces before or after the username or password — they are easy to add accidentally. Copy-pasting from a document can sometimes include hidden characters. Try typing the credentials manually instead.
+        </div>
+      </details>
+
+      <details>
+        <summary>Can I go back to the product list while in checkout?</summary>
+        <div class="faq-answer">
+          Yes. During checkout step 1 (entering your details) you can click <code>Cancel</code> to return to the cart. On the order summary page (step 2) you can also click <code>Cancel</code> to go back. Once you click <code>Finish</code>, the order is complete and cannot be undone — but you can simply start a new one.
+        </div>
+      </details>
+
+      <details>
+        <summary>The product images all look wrong or broken</summary>
+        <div class="faq-answer">
+          This is expected if you're logged in as <code>problem_user</code>. That account is intentionally set up with broken images to simulate a buggy application. Log out and log back in as <code>standard_user</code> to see the correct images.
+        </div>
+      </details>
+
+      <details>
+        <summary>How do I log out?</summary>
+        <div class="faq-answer">
+          Click the burger menu icon (three horizontal lines) in the top left corner, then click <code>Logout</code>. You'll be taken back to the login page.
+        </div>
+      </details>
+
+      <details>
+        <summary>My cart has items from a previous session — how do I clear it?</summary>
+        <div class="faq-answer">
+          Open the burger menu (top left) and click <code>Reset App State</code>. This clears your cart and returns the product buttons to "Add to cart". It does not log you out.
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- AI METHODOLOGY NOTE -->
+  <div class="methodology">
+    <div class="methodology-title">How this page was created — AI tool disclosure</div>
+    <div class="method-grid">
+      <div class="method-item">
+        <strong>Tool used</strong>
+        <p>Claude (Anthropic) — used to draft the structure, copy, and FAQ content.</p>
+      </div>
+      <div class="method-item">
+        <strong>How accuracy was checked</strong>
+        <p>Every step was validated by manually running the same actions on saucedemo.com and cross-referencing against the Playwright test suite written for this project.</p>
+      </div>
+      <div class="method-item">
+        <strong>What was corrected</strong>
+        <p>The initial AI draft mentioned a search bar — SauceDemo has no search. Removed. The user table was verified against the login page's own hint text.</p>
+      </div>
+      <div class="method-item">
+        <strong>Why this matters</strong>
+        <p>AI can hallucinate features that don't exist. Validating AI output against the real application is the same principle as testing software against its requirements.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  SauceDemo is a demo application maintained by Sauce Labs for testing purposes. No real purchases are made.
+</footer>
+
+</body>
+</html>
